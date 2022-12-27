@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="cJO-0a-zOj">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Formulario De Venta-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="FormularioVentasViewController" customModule="ejercicio2Clase8" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Venta" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="On0-Jm-hGV">
+                                <rect key="frame" x="168" y="113" width="57" height="33"/>
+                                <fontDescription key="fontDescription" name="ChalkboardSE-Regular" family="Chalkboard SE" pointSize="23"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Nombre" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="qDY-4I-dtG">
+                                <rect key="frame" x="39.333333333333343" y="166" width="314.33333333333326" height="34"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Valor De Venta" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="dkA-eh-TYD">
+                                <rect key="frame" x="39.333333333333343" y="215" width="314.33333333333326" height="34"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Cantidad De Libros" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Wh2-kX-hPW">
+                                <rect key="frame" x="39.333333333333343" y="264" width="314.33333333333326" height="34"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9q0-cp-pne">
+                                <rect key="frame" x="157.33333333333334" y="382" width="78.333333333333343" height="35"/>
+                                <color key="backgroundColor" red="0.20000000000000001" green="0.66424006219999998" blue="0.66423153879999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Vender">
+                                    <color key="baseForegroundColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.19469513390000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="accionDelBotonVender:" destination="BYZ-38-t0r" eventType="touchUpInside" id="NtG-f7-G3x"/>
+                                </connections>
+                            </button>
+                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Medio De Pago" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Vv5-tS-GHd">
+                                <rect key="frame" x="39.333333333333343" y="313" width="314.33333333333326" height="34"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                        <color key="backgroundColor" systemColor="systemGray2Color"/>
+                        <constraints>
+                            <constraint firstItem="On0-Jm-hGV" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="7JW-vW-nVo"/>
+                            <constraint firstItem="Wh2-kX-hPW" firstAttribute="width" secondItem="dkA-eh-TYD" secondAttribute="width" id="AM8-h3-0g3"/>
+                            <constraint firstItem="9q0-cp-pne" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" multiplier="0.2" id="ClN-eE-q0g"/>
+                            <constraint firstItem="qDY-4I-dtG" firstAttribute="top" secondItem="On0-Jm-hGV" secondAttribute="bottom" constant="20" id="DQo-RS-Xi1"/>
+                            <constraint firstItem="Vv5-tS-GHd" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="DdF-x4-ihQ"/>
+                            <constraint firstItem="dkA-eh-TYD" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="EZu-6W-dtB"/>
+                            <constraint firstItem="9q0-cp-pne" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Mk8-KP-RBJ"/>
+                            <constraint firstItem="On0-Jm-hGV" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="10" id="QVu-0i-q8b"/>
+                            <constraint firstItem="dkA-eh-TYD" firstAttribute="top" secondItem="qDY-4I-dtG" secondAttribute="bottom" constant="15" id="R47-hF-2cP"/>
+                            <constraint firstItem="Wh2-kX-hPW" firstAttribute="top" secondItem="dkA-eh-TYD" secondAttribute="bottom" constant="15" id="Skt-6P-h1B"/>
+                            <constraint firstItem="9q0-cp-pne" firstAttribute="top" secondItem="Vv5-tS-GHd" secondAttribute="bottom" constant="35" id="SxP-Xp-zug"/>
+                            <constraint firstItem="Vv5-tS-GHd" firstAttribute="top" secondItem="Wh2-kX-hPW" secondAttribute="bottom" constant="15" id="Tcl-02-iuC"/>
+                            <constraint firstItem="dkA-eh-TYD" firstAttribute="width" secondItem="qDY-4I-dtG" secondAttribute="width" id="ZWQ-8m-P7A"/>
+                            <constraint firstItem="qDY-4I-dtG" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" multiplier="0.8" id="cq8-XN-SyJ"/>
+                            <constraint firstItem="On0-Jm-hGV" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" multiplier="0.145038" id="hRW-Uf-OgH"/>
+                            <constraint firstItem="Wh2-kX-hPW" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="hfS-aD-OwD"/>
+                            <constraint firstItem="Vv5-tS-GHd" firstAttribute="width" secondItem="Wh2-kX-hPW" secondAttribute="width" id="pRC-wn-14e"/>
+                            <constraint firstItem="qDY-4I-dtG" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="rTg-vy-Mm2"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Formulario De Venta" id="gtx-ou-4Y2"/>
+                    <connections>
+                        <outlet property="cantidadLibrosCampoDeTexto" destination="Wh2-kX-hPW" id="J9S-AK-lut"/>
+                        <outlet property="medioPagoCampoDeTexto" destination="Vv5-tS-GHd" id="cMI-Bd-fgK"/>
+                        <outlet property="nombreCampoDeTexto" destination="qDY-4I-dtG" id="aAn-zJ-e22"/>
+                        <outlet property="valorVentaCampoDeTexto" destination="dkA-eh-TYD" id="cd4-8T-yOm"/>
+                        <segue destination="Xea-fI-Mn8" kind="show" identifier="navegarHaciaResumenDeVenta" id="rZY-uF-plA"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1040.4580152671756" y="-27.464788732394368"/>
+        </scene>
+        <!--Resumen Venta View Controller-->
+        <scene sceneID="kjP-lm-BSf">
+            <objects>
+                <viewController id="Xea-fI-Mn8" customClass="ResumenVentaViewController" customModule="ejercicio2Clase8" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="znY-dy-caa">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Titulo Del Libro Vendido" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="S7u-bN-Vc5">
+                                <rect key="frame" x="59" y="122.99999999999999" width="275" height="25.333333333333329"/>
+                                <fontDescription key="fontDescription" name="AppleSDGothicNeo-SemiBold" family="Apple SD Gothic Neo" pointSize="21"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Total De Dinero Recaudado" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ulf-yD-Ecj">
+                                <rect key="frame" x="59" y="188.33333333333334" width="275" height="26"/>
+                                <fontDescription key="fontDescription" name="AppleSDGothicNeo-SemiBold" family="Apple SD Gothic Neo" pointSize="21"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Nr2-8u-nsb">
+                                <rect key="frame" x="59" y="249.33333333333337" width="275" height="180"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="180" id="Ecc-NC-A96"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="dpc-jG-2Yy"/>
+                        <color key="backgroundColor" systemColor="systemMintColor"/>
+                        <constraints>
+                            <constraint firstItem="Nr2-8u-nsb" firstAttribute="centerX" secondItem="znY-dy-caa" secondAttribute="centerX" id="0Tk-SU-ffP"/>
+                            <constraint firstItem="ulf-yD-Ecj" firstAttribute="width" secondItem="S7u-bN-Vc5" secondAttribute="width" id="8Lj-OU-KgP"/>
+                            <constraint firstItem="Nr2-8u-nsb" firstAttribute="width" secondItem="znY-dy-caa" secondAttribute="width" multiplier="0.7" id="Bhf-KF-xPV"/>
+                            <constraint firstItem="ulf-yD-Ecj" firstAttribute="centerX" secondItem="znY-dy-caa" secondAttribute="centerX" id="MhQ-Ct-3HO"/>
+                            <constraint firstItem="S7u-bN-Vc5" firstAttribute="width" secondItem="znY-dy-caa" secondAttribute="width" multiplier="0.7" id="cjn-zv-k7o"/>
+                            <constraint firstItem="ulf-yD-Ecj" firstAttribute="top" secondItem="S7u-bN-Vc5" secondAttribute="bottom" constant="40" id="fcg-wq-Ren"/>
+                            <constraint firstItem="S7u-bN-Vc5" firstAttribute="top" secondItem="dpc-jG-2Yy" secondAttribute="top" constant="20" id="ktn-Jf-t54"/>
+                            <constraint firstItem="S7u-bN-Vc5" firstAttribute="centerX" secondItem="znY-dy-caa" secondAttribute="centerX" id="veN-c3-RBP"/>
+                            <constraint firstItem="Nr2-8u-nsb" firstAttribute="top" secondItem="ulf-yD-Ecj" secondAttribute="bottom" constant="35" id="xbz-hj-2pV"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="Pdr-EW-khj"/>
+                    <connections>
+                        <outlet property="medioDePagoImagen" destination="Nr2-8u-nsb" id="g2g-Eq-4ph"/>
+                        <outlet property="tituloDelLibroVendido" destination="S7u-bN-Vc5" id="QHy-2B-KQs"/>
+                        <outlet property="totalDeDineroRecaudadoLabel" destination="ulf-yD-Ecj" id="pOz-wT-RbX"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="kcg-7r-JiJ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1981" y="-27"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="wQf-Vl-7Gu">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="cJO-0a-zOj" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="pMb-cy-aof">
+                        <rect key="frame" x="0.0" y="59" width="393" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="SIE-SY-HHK"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="pwB-tg-wCQ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="113.74045801526717" y="-27.464788732394368"/>
+        </scene>
+    </scenes>
+    <resources>
+        <systemColor name="systemGray2Color">
+            <color red="0.68235294117647061" green="0.68235294117647061" blue="0.69803921568627447" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemMintColor">
+            <color red="0.0" green="0.7803921568627451" blue="0.74509803921568629" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
+</document>
