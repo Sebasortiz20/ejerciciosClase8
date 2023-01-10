@@ -13,12 +13,11 @@ class ResumenVentaViewController: UIViewController {
     @IBOutlet weak var tituloDelLibroVendido: UILabel!
     @IBOutlet weak var totalDeDineroRecaudadoLabel: UILabel!
     
-    var venta: Venta?
-    var imagenTipoDeVenta: UIImage?
+    public var venta: Venta?
+    private var imagenTipoDeVenta: UIImage?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         if let ventaSegura = self.venta {
             let nombre = ventaSegura.nombre
             let totalDeDineroRecaudado = (ventaSegura.cantidadLibros * ventaSegura.valorVenta)

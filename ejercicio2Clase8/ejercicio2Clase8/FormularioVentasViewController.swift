@@ -7,7 +7,7 @@
 
 import UIKit
 
-struct Venta {
+public struct Venta {
     let nombre: String
     let valorVenta: Int
     let cantidadLibros: Int
@@ -16,11 +16,11 @@ struct Venta {
 
 class FormularioVentasViewController: UIViewController {
     
-    enum EstadoFormulario {
+    private enum EstadoFormulario {
         case nombreValido, valorVentaValido, cantidadLibrosValido, nombreVacio, valorVentaVacio, cantidadLibrosVacio, medioDePagoValido, medioDePagoVacio, medioDePagoAceptado
     }
     
-    struct Constantes {
+    private struct Constantes {
         static let medioDePagoEnEfectivo = "efectivo"
         static let medioDePagoConTarjeta = "tarjeta"
         static let nombreDelSegueHaciaResumenDeVenta = "navegarHaciaResumenDeVenta"
@@ -34,18 +34,28 @@ class FormularioVentasViewController: UIViewController {
     @IBOutlet weak var cantidadLibrosCampoDeTexto: UITextField!
     @IBOutlet weak var medioPagoCampoDeTexto: UITextField!
     
-    var nombre: String?
-    var valorVenta: String?
-    var cantidadLibros: String?
-    var medioDePago: String?
-    var resultado: String?
+    private var nombre: String?
+    private var valorVenta: String?
+    private var cantidadLibros: String?
+    private var medioDePago: String?
+    private var resultado: String?
+    private var imagenMedioDePago: UIImage?
+    private var alerta: UIAlertController?
+    private var accionAceptar: UIAlertAction?
+    private var resultadosDeValidacion: [EstadoFormulario] = []
     
-    var imagenMedioDePago: UIImage?
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        crearAlerta()
+    }
     
-    var alerta: UIAlertController?
-    var aceptarAcción: UIAlertAction?
-    
-    var resultadosDeValidacion: [EstadoFormulario] = []
+    private func crearAlerta() {
+        alerta = UIAlertController(title: Constantes.tituloDeLaAlerta, message: Constantes.cuerpoDeLaAlerta , preferredStyle: .alert)
+        accionAceptar = UIAlertAction(title: Constantes.nombreDelBottonDeLaAlerta, style: .default)
+        if let alertaSegura = alerta, let aceptarActionSegura = accionAceptar  {
+            alertaSegura.addAction(aceptarActionSegura)
+        }
+    }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let resumenVentaViewController = segue.destination as? ResumenVentaViewController {
@@ -63,24 +73,30 @@ class FormularioVentasViewController: UIViewController {
     @IBAction func accionDelBotonVender(_ sender: UIButton) {
         limpiarResultadosDeValidacion()
         extraerDatos()
-        validacionDeCampos()
+        validarCamposDelFormulario()
         determinarColoresCamposDeFormulario()
         procesarCampos()
-        crearAlerta()
     }
     
-    func limpiarResultadosDeValidacion() {
+    private func limpiarResultadosDeValidacion() {
         resultadosDeValidacion = []
     }
     
-    func extraerDatos() {
+    private func extraerDatos() {
         nombre = nombreCampoDeTexto.text ?? ""
         valorVenta = valorVentaCampoDeTexto.text ?? ""
         cantidadLibros = cantidadLibrosCampoDeTexto.text ?? ""
         medioDePago = medioPagoCampoDeTexto.text ?? ""
     }
     
-    func validarCampoNombre() {
+    private func validarCamposDelFormulario(){
+        validarCampoNombre()
+        validarCampoValorVenta()
+        validarCampoCantidadLibros()
+        validarCampoMedioDePago()
+    }
+    
+    private func validarCampoNombre() {
         if let nombreSeguro = nombre {
             if nombreSeguro.isEmpty {
                 resultadosDeValidacion.append(.nombreVacio)
@@ -90,7 +106,7 @@ class FormularioVentasViewController: UIViewController {
         }
     }
     
-    func validarCampoValorVenta() {
+    private func validarCampoValorVenta() {
         if let valorVentaSeguro = valorVenta {
             if valorVentaSeguro.isEmpty {
                 resultadosDeValidacion.append(.valorVentaVacio)
@@ -100,7 +116,7 @@ class FormularioVentasViewController: UIViewController {
         }
     }
     
-    func validarCampoCantidadLibros() {
+    private func validarCampoCantidadLibros() {
         if let cantidadLibrosSeguro = cantidadLibros {
             if cantidadLibrosSeguro.isEmpty {
                 resultadosDeValidacion.append(.cantidadLibrosVacio)
@@ -110,7 +126,7 @@ class FormularioVentasViewController: UIViewController {
         }
     }
     
-    func validarCampoMedioDePago() {
+    private func validarCampoMedioDePago() {
         if let medioDePagoSeguro = medioDePago {
             if medioDePagoSeguro.isEmpty {
                 resultadosDeValidacion.append(.medioDePagoVacio)
@@ -124,48 +140,26 @@ class FormularioVentasViewController: UIViewController {
         }
     }
     
-    func validacionDeCampos(){
-        validarCampoNombre()
-        validarCampoValorVenta()
-        validarCampoCantidadLibros()
-        validarCampoMedioDePago()
+    private func determinarColoresCamposDeFormulario() {
+        determinarColorCampoNombre()
+        determinarColorCampoValorVenta()
+        determinarColorCampoCantidadDeLibros()
+        determinarColorCampoMedioDePago()
     }
     
-    func procesarCampos() {
-        if let medioDePagoSeguro = medioDePago {
-            let lasCredencialesSonValidas = validarMedioDePago(efectivo: medioDePagoSeguro, tarjeta: medioDePagoSeguro)
-            procesoResultadoDeLaValidación(resultado: lasCredencialesSonValidas)
-        }
-    }
-    
-    func validarMedioDePago(efectivo: String, tarjeta: String) -> Bool {
-        let condicion = efectivo == Constantes.medioDePagoEnEfectivo || tarjeta == Constantes.medioDePagoConTarjeta
-        if  condicion {
-            return true
-        } else {
-            return false
-        }
-    }
-    
-    func procesoResultadoDeLaValidación(resultado: Bool) {
-        if resultado {
-            aplicarProbabilidadDeErrorAlActulizarContador()
-        }
-    }
-    
-    func determinarColorCampoNombre() {
+    private func determinarColorCampoNombre() {
         nombreCampoDeTexto.backgroundColor = resultadosDeValidacion.contains(.nombreValido) ? .systemBackground : .orange
     }
     
-    func determinarColorCampoValorVenta() {
+    private func determinarColorCampoValorVenta() {
         valorVentaCampoDeTexto.backgroundColor = resultadosDeValidacion.contains(.valorVentaValido) ? .systemBackground : .orange
     }
     
-    func determinarColorCampoCantidadDeLibros() {
+    private func determinarColorCampoCantidadDeLibros() {
         cantidadLibrosCampoDeTexto.backgroundColor = resultadosDeValidacion.contains(.cantidadLibrosValido) ? .systemBackground : .orange
     }
     
-    func determinarColorCampoMedioDePago() {
+    private func determinarColorCampoMedioDePago() {
         if resultadosDeValidacion.contains(.medioDePagoValido){
             medioPagoCampoDeTexto.backgroundColor = .orange
         } else if resultadosDeValidacion.contains(.medioDePagoVacio){
@@ -175,43 +169,59 @@ class FormularioVentasViewController: UIViewController {
         }
     }
     
-    func determinarColoresCamposDeFormulario() {
-        determinarColorCampoNombre()
-        determinarColorCampoValorVenta()
-        determinarColorCampoCantidadDeLibros()
-        determinarColorCampoMedioDePago()
+    private func procesarCampos() {
+        if let medioDePagoSeguro = medioDePago {
+            let lasCredencialesSonValidas = validarMedioDePago(efectivo: medioDePagoSeguro, tarjeta: medioDePagoSeguro)
+            procesarResultadoDeLaValidación(resultado: lasCredencialesSonValidas)
+        }
     }
     
-    func navegarHaciaResumenDeVenta() {
-        performSegue(withIdentifier: Constantes.nombreDelSegueHaciaResumenDeVenta, sender: self)
+    private func validarMedioDePago(efectivo: String, tarjeta: String) -> Bool {
+        let condicion = efectivo == Constantes.medioDePagoEnEfectivo || tarjeta == Constantes.medioDePagoConTarjeta
+        if  condicion {
+            return true
+        } else {
+            return false
+        }
+    }
+    
+    private func procesarResultadoDeLaValidación(resultado: Bool) {
+        if resultado {
+            tratarDeMostrarAlertaDeResulado()
+        }
+    }
+    
+    private func tratarDeMostrarAlertaDeResulado(){
+        let seObtuvoError = obtenerPosibleError()
+        if seObtuvoError {
+            presentarAlertaDeError()
+        } else {
+            navegarHaciaResumenDeVenta()
+        }
+    }
+    
+    private func obtenerPosibleError() -> Bool {
+        let numeroAleatorio = generarNumeroAleatorio()
+        switch (numeroAleatorio) {
+        case 1...4 :
+            return true
+        default :
+            return false
+        }
     }
     
     func generarNumeroAleatorio() -> Int{
         return Int.random(in: 1 ... 7)
     }
     
-    func aplicarProbabilidadDeErrorAlActulizarContador(){
-        let numeroAleatorio = generarNumeroAleatorio()
-        switch (numeroAleatorio) {
-        case 1 ... 4 :
-            presentarAlerta()
-        default :
-            navegarHaciaResumenDeVenta()
-        }
-    }
-    
-    func crearAlerta() {
-        alerta = UIAlertController(title: Constantes.tituloDeLaAlerta, message: Constantes.cuerpoDeLaAlerta , preferredStyle: .alert)
-        aceptarAcción = UIAlertAction(title: Constantes.nombreDelBottonDeLaAlerta, style: .default)
-        if let alertaSegura = alerta, let aceptarActionSegura = aceptarAcción  {
-            alertaSegura.addAction(aceptarActionSegura)
-        }
-    }
-    
-    func presentarAlerta() {
+    private func presentarAlertaDeError() {
         if let alertaSegura = alerta {
             present(alertaSegura, animated: true)
         }
+    }
+    
+    private func navegarHaciaResumenDeVenta() {
+        performSegue(withIdentifier: Constantes.nombreDelSegueHaciaResumenDeVenta, sender: self)
     }
 }
 

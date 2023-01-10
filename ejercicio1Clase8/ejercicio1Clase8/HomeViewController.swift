@@ -14,11 +14,10 @@ class HomeViewController: UIViewController {
     @IBOutlet weak var apellidoDelUsuarioLabel: UILabel!
     @IBOutlet weak var fotoDePerfilImageView: UIImageView!
     
-    var usuario: Usuario?
+    public var usuario: Usuario?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         if let seguroUsuario = self.usuario {
             let correo = seguroUsuario.correo
             let nombre = seguroUsuario.nombre
@@ -35,7 +34,7 @@ class HomeViewController: UIViewController {
         cerrarVistaHome()
     }
     
-    func cerrarVistaHome() {
+    private func cerrarVistaHome() {
         dismiss(animated: true)
     }
 }
